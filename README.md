@@ -1,4 +1,4 @@
-# Day 01 – Piscine .NET
+# Day 01 – .NET Boot camp
 ### Make it classy
 
 # Contents
