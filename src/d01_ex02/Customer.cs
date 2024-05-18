@@ -1,14 +1,26 @@
-public class Customer {
-	public int Id {
-		get;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
+
+public class Customer(string name, int id)
+{
+
+    public int Id
+    {
+        get;
+    } = id;
+
+    public string? Name
+    {
+        get;
+    } = name;
+
+	public void FillCart(int max_capacity) {
+		Random rnd = new();
+		number_of_goods_ = rnd.Next(1, max_capacity);
 	}
 
-	public string? Name {
-		get;
-	}
-
-	public override string ToString() {
-		return (Name != null) ? $"{Name} customer #{Id}" : "Unknown customer";
+    public override string ToString() {
+		return (Name != null) ? $"{Name} customer #{Id} ({number_of_goods_} items in cart)" : "Unknown customer";
 	}
 
 	public static bool operator ==(Customer c1, Customer c2) {
@@ -38,9 +50,8 @@ public class Customer {
 		return HashCode.Combine(Id, Name);
 	}
 
-	public Customer(string name, int id) {
-		Id = id;
-		Name = name;
-	}
+
+	private int number_of_goods_;
+
 
 }
