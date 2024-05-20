@@ -1,10 +1,17 @@
 public class Customer {
+	public Customer(string name, int id) {
+		Id = id;
+		Name = name;
+	}
+
 	public int Id {
 		get;
+		set;
 	}
 
 	public string? Name {
 		get;
+		set;
 	}
 
 	public override string ToString() {
@@ -38,9 +45,5 @@ public class Customer {
 		return HashCode.Combine(Id, Name);
 	}
 
-	public Customer(string name, int id) {
-		Id = id;
-		Name = name;
-	}
 
 }
