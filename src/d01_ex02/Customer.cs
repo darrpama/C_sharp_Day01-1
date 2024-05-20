@@ -1,18 +1,24 @@
 using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 
-public class Customer(string name, int id)
+public class Customer
 {
+	public Customer(string name, int id) {
+		Id = id;
+		Name = name;
+	}
 
-    public int Id
-    {
-        get;
-    } = id;
+	public int Id
+	{
+		get;
+		set;
+	}
 
-    public string? Name
-    {
-        get;
-    } = name;
+	public string? Name
+	{
+		get;
+		set;
+	}
 
 	public void FillCart(int max_capacity) {
 		Random rnd = new();
@@ -50,8 +56,5 @@ public class Customer(string name, int id)
 		return HashCode.Combine(Id, Name);
 	}
 
-
 	private int number_of_goods_;
-
-
 }
