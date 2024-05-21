@@ -22,11 +22,11 @@ public class Customer
 
 	public void FillCart(int max_capacity) {
 		Random rnd = new();
-		numberOfGoods = rnd.Next(1, max_capacity);
+		number_of_goods_ = rnd.Next(1, max_capacity);
 	}
 
     public override string ToString() {
-		return (Name != null) ? $"{Name} customer #{Id} ({numberOfGoods} items in cart)" : "Unknown customer";
+		return (Name != null) ? $"{Name} customer #{Id} ({number_of_goods_} items in cart)" : "Unknown customer";
 	}
 
 	public static bool operator ==(Customer c1, Customer c2) {
@@ -56,5 +56,5 @@ public class Customer
 		return HashCode.Combine(Id, Name);
 	}
 
-	private int numberOfGoods;
+	private int number_of_goods_;
 }
