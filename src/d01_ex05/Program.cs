@@ -20,7 +20,6 @@ register1.customers.Enqueue(customer3);
 CashRegister register2 = new CashRegister("Register #2");
 register2.customers.Enqueue(customer4);
 register2.customers.Enqueue(customer5);
-// register2.customers.Enqueue(customer6);
 
 Console.WriteLine(register1.ToString());
 foreach (var customer in register1.customers) {
@@ -36,6 +35,18 @@ Store store = new Store(30, 2);
 store.CashRegisters.Add(register1);
 store.CashRegisters.Add(register2);
 
-var customer7 = new Customer("Andrew", 1);
-customer1.FillCart(15);
-CashRegister res = CustomerExtentions.ChooseLeastCustomers(customer7, store.CashRegisters);
+Console.WriteLine(store.CashRegisters[0].ToString());
+foreach (var customer in store.CashRegisters[0].customers) {
+	Console.WriteLine(customer.ToString());
+}
+
+Console.WriteLine(store.CashRegisters[1].ToString());
+foreach (var customer in store.CashRegisters[1].customers) {
+	Console.WriteLine(customer.ToString());
+}
+
+CashRegister res = CustomerExtentions.ChooseLeastCustomers(store.CashRegisters);
+Console.WriteLine(res.customers.Count());
+foreach (var customer in res.customers) {
+	Console.WriteLine(customer.ToString());
+}

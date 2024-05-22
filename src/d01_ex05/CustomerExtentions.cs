@@ -1,6 +1,6 @@
 public static class CustomerExtentions {
-	public static CashRegister ChooseLeastCustomers(Customer customer, List<CashRegister> cashRegisters) {
+	public static CashRegister ChooseLeastCustomers(List<CashRegister> cashRegisters) {
 		cashRegisters.Sort();
-		return cashRegisters.FirstOrDefault();
+		return cashRegisters[0];
 	}
 }
