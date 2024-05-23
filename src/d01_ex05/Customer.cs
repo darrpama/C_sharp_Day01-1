@@ -56,5 +56,6 @@ public class Customer
 		return HashCode.Combine(Id, Name);
 	}
 
+	public int NumberOfGoods { get{ return number_of_goods_; } }
 	private int number_of_goods_;
 }

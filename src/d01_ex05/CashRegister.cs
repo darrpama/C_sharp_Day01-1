@@ -1,4 +1,4 @@
-public class CashRegister : IComparable<CashRegister>
+public class CashRegister
 {
 	public CashRegister(string name) {
 		Name = name;
@@ -16,8 +16,12 @@ public class CashRegister : IComparable<CashRegister>
 
 	public Queue<Customer> customers = new Queue<Customer>();
 
-	public int CompareTo(CashRegister other) {
-		return this.customers.Count().CompareTo(other.customers.Count());
+	public int GoodsNumber() {
+		int goodsInRegister = 0;
+		foreach (var customer in customers) {
+			goodsInRegister += customer.NumberOfGoods;
+		}
+		return goodsInRegister;
 	}
 
 	public static bool operator ==(CashRegister cr1, CashRegister cr2) {
