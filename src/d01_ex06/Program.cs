@@ -24,7 +24,7 @@ foreach (var customer in listOfCustomers) {
 while (store.IsOpen() && (q.Count > 0)) {
 	Customer customer =	q.Dequeue();
 	customer.FillCart(maxCapacity);
-	var register = CustomerExtentions.ChooseLeastCustomers(ref store.CashRegisters);
+	var register = CustomerExtentions.ChooseLeastCustomers(store.CashRegisters);
 	int tmp = store.Storage.NumberOfGoods - customer.NumberOfGoods;
 	if (tmp < 0) {
 		customer.NumberOfGoods -= tmp;
@@ -32,8 +32,33 @@ while (store.IsOpen() && (q.Count > 0)) {
 		Console.WriteLine($"{customer.Name}, customer #{customer.Id} ({customer.NumberOfGoods} items left in cart)");
 	} else {
 		store.Storage.NumberOfGoods -= customer.NumberOfGoods;
-		register.customers.Append(customer);
-		Console.WriteLine(customer.ToString() + " " + register.ToString());
+		register.customers.Enqueue(customer);
+		Console.WriteLine(customer.ToString() + " " + $"- {register.ToString()} ({register.customers.Count} people with {register.GoodsNumber()} items behind)");
+	}
+}
+
+Console.WriteLine("");
+
+store = new(40, 3);
+q = new(10);
+
+foreach (var customer in listOfCustomers) {
+	q.Enqueue(customer);
+}
+
+while (store.IsOpen() && (q.Count > 0)) {
+	Customer customer =	q.Dequeue();
+	customer.FillCart(maxCapacity);
+	var register = CustomerExtentions.ChooseLeastGoods(store.CashRegisters);
+	int tmp = store.Storage.NumberOfGoods - customer.NumberOfGoods;
+	if (tmp < 0) {
+		customer.NumberOfGoods -= tmp;
+		store.Storage.NumberOfGoods = 0;
+		Console.WriteLine($"{customer.Name}, customer #{customer.Id} ({customer.NumberOfGoods} items left in cart)");
+	} else {
+		store.Storage.NumberOfGoods -= customer.NumberOfGoods;
+		register.customers.Enqueue(customer);
+		Console.WriteLine(customer.ToString() + " " + $"- {register.ToString()} ({register.customers.Count} people with {register.GoodsNumber()} items behind)");
 	}
 }
 

@@ -1,5 +1,5 @@
 public static class CustomerExtentions {
-	public static CashRegister ChooseLeastCustomers(ref List<CashRegister> cashRegisters) {
+	public static CashRegister ChooseLeastCustomers(List<CashRegister> cashRegisters) {
 		cashRegisters.Sort((l, r) => l.customers.Count().CompareTo(r.customers.Count()));
 		return cashRegisters[0];
 	}

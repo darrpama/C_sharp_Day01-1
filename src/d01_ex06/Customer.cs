@@ -26,7 +26,7 @@ public class Customer
 	}
 
     public override string ToString() {
-		return (Name != null) ? $"{Name} customer #{Id} ({NumberOfGoods} items in cart)" : "Unknown customer";
+		return (Name != null) ? $"{Name}, customer #{Id} ({NumberOfGoods} items in cart)" : "Unknown customer";
 	}
 
 	public static bool operator ==(Customer c1, Customer c2) {
